@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>job Appliclation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Job Application Form</h1>
+    <form action=onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+       
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea><br><br>
+
+        <label for="education">Education Qualification:</label>
+        <radio>
+            <input type="radio" name="education" value="12th">12th<br>
+            <input type="radio" name="education" value="10th">10th<br>
+            <input type="radio" name="education" value="B.E">B.E<br>
+            <input type="radio" name="education" value="B.Tech">B.Tech<br>
+            <input type="radio" name="education" value="M.E">M.E<br>
+            <input type="radio" name="education" value="M.Tech">M.Tech<br>
+            <input type="radio" name="education" value="MBA">MBA<br>
+
+        </radio>
+        <br><br>
+        <label for="position">Position Applying For:</label>
+        <radio>
+            <input type="radio" name="position" value="Frontend Developer">Frontend Developer<br>
+            <input type="radio" name="position" value="Backend Developer">Backend Developer<br>
+            <input type="radio" name="position" value="Full Stack Developer">Full Stack Developer<br>
+            <input type="radio" name="position" value="Data Scientist">Data Scientist<br>
+            <input type="radio" name="position" value="Machine Learning Engineer">Machine Learning Engineer<br>
+            <input type="radio" name="position" value="DevOps Engineer">DevOps Engineer<br>
+            <input type="radio" name="position" value="Cybersecurity Analyst">Cybersecurity Analyst<br>
+            <input type="radio" name="position" value="Software Engineer">Software Engineer<br>
+            <input type="radio" name="position" value="HR">HR<br>
+            <input type="radio" name="position" value="Cloud Engineer">Cloud Engineer<br>
+            <input type="radio" name="position" value="Project Manager">Project Manager<br>
+            <input type="radio" name="position" value="Business Analyst">Business Analyst<br>
+        </radio>
+        <br><br>
+        <label for="experience">Experience:</label>
+        <select id="experience" name="experience" required>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="more than 7">more than 7</option>
+
+        </select>
+        <br><br>
+
+        <label for="resume">Resume:</label>
+        <input type="file" id="resume" name="resume" required><br><br>
+
+        <label for="self intro">upload your Self Introduction video (max 30sec):</label>
+        <input type="file" id="self intro" name="self intro" required><br><br>
+
+        
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let position = document.getElementById("position").value;
+    let resume = document.getElementById("resume").value;
+    let educationQualification = document.getElementById("education").value.trim();
+
+   
+    if (name === "") {
+        alert("Please enter your full name");
+        return false;
+    }
+
+    
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.match(emailPattern)) {
+        alert("Please enter a valid email");
+        return false;
+    }
+
+   
+    let phonePattern = /^[0-9]{10}$/;
+    if (!phone.match(phonePattern)) {
+        alert("Phone number must be 10 digits");
+        return false;
+    }
+
+    
+    if (position === "") {
+        alert("Please select a position");
+        return false;
+    }
+
+    
+    if (resume === "") {
+        alert("Please upload your resume");
+        return false;
+    }
+
+     educationQualification = document.getElementById("education").value;
+ 
+     let allowedQualifications = ["B.E", "B.Tech", "M.E", "M.Tech", "MCA", "MBA"];
+
+    if (!allowedQualifications.includes(educationQualification)) {
+    alert("Candidate should have a degree (B.E or above)");
+    return false;
+}
+
+
+    alert("Form submitted successfully!");
+    return true;
+}
+
+
+    </script>
+    
+</body>
+</html>
